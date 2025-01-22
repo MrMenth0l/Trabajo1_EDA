@@ -12,7 +12,7 @@ public interface IBlender {
     blender with the specified product.
     **/
     public void fillBlender(String prod, float ml);
-    public int actualCapacity();
+    public float actualCapacity();
     public void fillBlender(String prod);
     /**
     * Method to increase the speed of the blender.
