@@ -1,4 +1,4 @@
-package org.example.View.Model;
+package org.example.Model;
 
 import junit.framework.TestCase;
 
