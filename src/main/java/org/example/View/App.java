@@ -28,6 +28,7 @@ public class App extends JFrame
 
         JPanel velocidadJPanel = new JPanel();
         JPanel capacityJPanel = new JPanel();
+        JPanel onoffPanel = new JPanel();
 
         JLabel introJLabel = new JLabel("UI para licuadora");
         introJLabel.setFont(font);
@@ -51,16 +52,58 @@ public class App extends JFrame
         gbc.gridy = 1;
         mainPanel.add(velocidadJPanel,gbc);
 
+        JLabel capacidadJLabel = new JLabel();
+
+
+
+        JButton encenderButton = new JButton("ON");
+        encenderButton.setFont(font);
+        encenderButton.setHorizontalAlignment(0);
+        onoffPanel.add(encenderButton);
+
+        JButton apagarButton = new JButton("OFF");
+        apagarButton.setFont(font);
+        apagarButton.setHorizontalAlignment(0);
+        onoffPanel.add(apagarButton);
+
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        mainPanel.add(onoffPanel,gbc);
+
+        encenderButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(blender.checkPowerStatus()==0){
+                    blender.switchPowerStatus();
+                };
+            }
+        });
+        apagarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(blender.checkPowerStatus()==1){
+                    blender.switchPowerStatus();
+                };
+            }
+        });
+
         incrementarVButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 blender.increaseSpeed();
                 String text ="Velocidad actual: " + blender.checkSpeed();
                 velocidadJLabel.setText(text);
-                velocidadJPanel.revalidate();
             }
         });
 
+        reducirVButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                blender.decreaseSpeed();
+                String text ="Velocidad actual: " + blender.checkSpeed();
+                velocidadJLabel.setText(text);
+            }
+        });
         
 
 
@@ -78,9 +121,6 @@ public class App extends JFrame
     {
         Blender blender = new Blender();
         App app = new App(blender);
-        while (true) { 
-            app.revalidate();
-            app.repaint();
-        }
+        
     }
 }
