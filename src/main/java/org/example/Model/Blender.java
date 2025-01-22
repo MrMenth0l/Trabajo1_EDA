@@ -3,7 +3,7 @@ package org.example.Model;
 public class Blender implements IBlender {
     private boolean powerStatus = false;
     private byte speed = 0;
-    private float currentCapacity = 0;
+    private float currentCapacity = 2000;
     private final float maxCapacity = 2000; // in milliliters
 
     @Override
@@ -19,16 +19,16 @@ public class Blender implements IBlender {
 
     @Override
     public void fillBlender(String prod, float ml) {
-        if (currentCapacity + ml > maxCapacity) {
+        if (currentCapacity - ml <= 0) {
             currentCapacity = currentCapacity;
         } else {
-            currentCapacity += ml;
+            currentCapacity -= ml;
         }
     }
 
     @Override
     public void fillBlender(String prod) {
-        fillBlender(prod, 300); // Default to 500ml
+        fillBlender(prod, 300); // Default to 300ml
     }
 
     @Override
@@ -63,7 +63,7 @@ public class Blender implements IBlender {
 
     @Override
     public boolean isFull() {
-        return currentCapacity >= maxCapacity;
+        return currentCapacity == 0;
     }
 
     @Override
