@@ -14,7 +14,7 @@ public class BlenderTest extends TestCase {
         System.out.println("Limpiando después de la prueba...");
     }
 
-    // Un caso de prueba
+  
     public void testAddition() {
         int result = 2 + 3;
         assertEquals(5, result);
