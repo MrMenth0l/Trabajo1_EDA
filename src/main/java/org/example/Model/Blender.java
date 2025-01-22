@@ -1,6 +1,6 @@
 package org.example.Model;
 
-class Blender implements IBlender {
+public class Blender implements IBlender {
     private boolean powerStatus = false;
     private byte speed = 0;
     private float currentCapacity = 0;
